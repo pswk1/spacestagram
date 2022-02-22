@@ -8,6 +8,15 @@ import {
   Text,
   Stack,
   useColorMode,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
   Flex,
   Spacer,
 } from '@chakra-ui/react';
@@ -25,7 +34,7 @@ const Card = ({ title, url, date, explanation }) => {
       <Image src={url} alt="space api image" boxSize={[240, 250, 300, 400]} />
       <Box>
         <Stack align="center">
-          <Badge variant="solid" colorScheme="green" rounded="full" px={2}>
+          <Badge variant="solid" colorScheme="purple" rounded="full" px={2}>
             {date}
           </Badge>
         </Stack>
@@ -35,7 +44,7 @@ const Card = ({ title, url, date, explanation }) => {
           </Text>
           {/* <Text fontWeight="light">{explanation}</Text> */}
         </Stack>
-        <Flex  alignItems='center' justifyContent='space-around' >
+        <Flex alignItems="center" justifyContent="space-around">
           <IconButton
             isRound
             variant="outline"
@@ -45,9 +54,21 @@ const Card = ({ title, url, date, explanation }) => {
             icon={<AiOutlineHeart />}
           />
           <Spacer />
-          <Button variant="solid" colorScheme="green" size="sm">
-            Learn More
-          </Button>
+          <Popover isLazy>
+            <PopoverTrigger>
+              <Button variant="solid" colorScheme="purple" size="sm">
+                Learn More
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
+              <PopoverBody>
+                {explanation}
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
         </Flex>
       </Box>
     </Box>
