@@ -5,13 +5,10 @@ import {
   Box,
   SimpleGrid,
   Heading,
-  // Text,
-  // Link,
-  // VStack,
-  // Code,
   Flex,
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { generateRandomLikes, generateId } from './utils/utils';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Card from './components/Card';
 import theme from './theme'
@@ -19,7 +16,7 @@ import theme from './theme'
 const API_KEY = process.env.REACT_APP_API_KEY;
 const APOD_URL = 'https://api.nasa.gov/planetary/apod';
 
-const endpoint = `${APOD_URL}?api_key=${API_KEY}&count=21`;
+const endpoint = `${APOD_URL}?api_key=${API_KEY}&count=12`;
 
 function App() {
   const [imgData, setImgData] = useState([]);
@@ -30,6 +27,11 @@ function App() {
       setLoading(true);
       try {
         const { data } = await axios.get(endpoint);
+        data.forEach((image) => {
+          image.id = generateId();
+          image.numOfLikes = generateRandomLikes();
+          image.liked = false;
+        });
         setImgData(data);
       } catch (err) {
         if (err) {
@@ -45,8 +47,8 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" mb="20px">
-        <Heading as="h1" size="3xl">
-          Spacestagram 🚀
+        <Heading as="h1" size="2xl">
+          Spacestagram 
         </Heading>
 
         <ColorModeSwitcher justifySelf="flex-end" />
@@ -60,13 +62,18 @@ function App() {
       ) : (
         <Flex alignItems="center" justifyContent="center">
           <SimpleGrid columns={[1, 2, null, 3]} spacing={12}>
-            {imgData.map(({ title, date, explanation, url }, i) => (
+            {imgData.map(({ title, date, explanation, url, numOfLikes, liked, id }) => (
               <Card
-                key={i}
+                key={id}
+                id={id}
                 title={title}
                 date={date}
                 explanation={explanation}
                 url={url}
+                numOfLikes={numOfLikes}
+                liked={liked}
+                imgData={imgData}
+                setImgData={setImgData}
               />
             ))}
           </SimpleGrid>

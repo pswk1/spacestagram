@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   Box,
-  IconButton,
   Image,
+  IconButton,
   Badge,
   Button,
   Text,
@@ -13,25 +13,52 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
   Flex,
   Spacer,
 } from '@chakra-ui/react';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
-const Card = ({ title, url, date, explanation }) => {
+const Card = ({
+  title,
+  id,
+  url,
+  date,
+  explanation,
+  numOfLikes,
+  liked,
+  imgData,
+  setImgData,
+}) => {
   const { colorMode } = useColorMode();
+
+  const handleLike = id => {
+    let imgDataCopy = [...imgData];
+    let imgToLike = imgDataCopy.find(img => img.id === id);
+    if (imgToLike.liked) {
+      imgToLike.liked = false;
+      imgToLike.numOfLikes--;
+    } else {
+      imgToLike.liked = true;
+      imgToLike.numOfLikes++;
+    }
+    setImgData(imgDataCopy);
+  };
+
   return (
     <Box
-      w={[240, 250, 300, 400]}
+      w={[100, 200, 300]}
       rounded="20px"
       overflow="hidden"
       bg={colorMode === 'dark' ? 'gray.700' : 'gray.200'}
     >
-      <Image src={url} alt="space api image" boxSize={[240, 250, 300, 400]} />
+      <Image
+        src={url}
+        alt="space api image"
+        boxSize={[100, 200, 300]}
+        objectFit="cover"
+      />
       <Box>
         <Stack align="center">
           <Badge variant="solid" colorScheme="purple" rounded="full" px={2}>
@@ -42,7 +69,6 @@ const Card = ({ title, url, date, explanation }) => {
           <Text as="h2" fontWeight="normal" my={2}>
             {title}
           </Text>
-          {/* <Text fontWeight="light">{explanation}</Text> */}
         </Stack>
         <Flex alignItems="center" justifyContent="space-around">
           <IconButton
@@ -51,8 +77,10 @@ const Card = ({ title, url, date, explanation }) => {
             colorScheme="red"
             aria-label="Like Button"
             fontSize="20px"
-            icon={<AiOutlineHeart />}
+            icon={liked ? <AiFillHeart /> : <AiOutlineHeart />}
+            onClick={() => handleLike(id)}
           />
+          <Text mx={2}>{numOfLikes} likes</Text>
           <Spacer />
           <Popover isLazy>
             <PopoverTrigger>
@@ -63,10 +91,8 @@ const Card = ({ title, url, date, explanation }) => {
             <PopoverContent>
               <PopoverArrow />
               <PopoverCloseButton />
-              {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
-              <PopoverBody>
-                {explanation}
-              </PopoverBody>
+              <PopoverHeader>Description</PopoverHeader>
+              <PopoverBody>{explanation}</PopoverBody>
             </PopoverContent>
           </Popover>
         </Flex>
