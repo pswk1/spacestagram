@@ -48,7 +48,7 @@ const Card = ({
 
   return (
     <Box
-      w={[100, 200, 300]}
+      w={[250, 340, 400]}
       rounded="20px"
       overflow="hidden"
       bg={colorMode === 'dark' ? 'gray.700' : 'gray.200'}
@@ -56,13 +56,13 @@ const Card = ({
       <Image
         src={url}
         alt="space api image"
-        boxSize={[100, 200, 300]}
+        boxSize={[250, 340, 400]}
         objectFit="cover"
       />
       <Box>
         <Stack align="center">
           <Badge variant="solid" colorScheme="purple" rounded="full" px={2}>
-            {date}
+            Published on {date}
           </Badge>
         </Stack>
         <Stack align="center">
@@ -72,7 +72,9 @@ const Card = ({
         </Stack>
         <Flex alignItems="center" justifyContent="space-around">
           <IconButton
+            mx={1}
             isRound
+            size="sm"
             variant="outline"
             colorScheme="red"
             aria-label="Like Button"

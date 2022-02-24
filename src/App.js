@@ -6,12 +6,12 @@ import {
   SimpleGrid,
   Heading,
   Flex,
+  theme
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { generateRandomLikes, generateId } from './utils/utils';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Card from './components/Card';
-import theme from './theme'
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const APOD_URL = 'https://api.nasa.gov/planetary/apod';
@@ -61,7 +61,7 @@ function App() {
         </Center>
       ) : (
         <Flex alignItems="center" justifyContent="center">
-          <SimpleGrid columns={[1, 2, null, 3]} spacing={12}>
+          <SimpleGrid columns={[1, 1, 1, 2]} spacing={12}>
             {imgData.map(({ title, date, explanation, url, numOfLikes, liked, id }) => (
               <Card
                 key={id}
