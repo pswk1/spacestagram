@@ -75,14 +75,14 @@ const Card = ({
             mx={1}
             isRound
             size="sm"
-            variant="outline"
+            variant="ghost"
             colorScheme="red"
             aria-label="Like Button"
             fontSize="20px"
             icon={liked ? <AiFillHeart /> : <AiOutlineHeart />}
             onClick={() => handleLike(id)}
           />
-          <Text mx={2}>{numOfLikes} likes</Text>
+          <Text >{numOfLikes} likes</Text>
           <Spacer />
           <Popover isLazy>
             <PopoverTrigger>
