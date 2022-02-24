@@ -1,21 +1,16 @@
 import { useState, useEffect } from 'react';
 import {
-  Box,
   ChakraProvider,
   Center,
   SimpleGrid,
-  Heading,
   Flex,
-  IconButton,
-  Link,
   Spinner,
   theme,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { generateRandomLikes, generateId } from './utils/utils';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Card from './components/Card';
-import { FaRandom, FaGithub, FaLinkedin } from 'react-icons/fa';
+import Header from './components/Header';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const APOD_URL = 'https://api.nasa.gov/planetary/apod';
@@ -51,47 +46,7 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Flex direction="row" justify="space-evenly" align="center" mb={10}>
-        <Box px={2}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <IconButton
-              isRound
-              size="lg"
-              variant="ghost"
-              aria-label="get random feed"
-              fontSize="20px"
-              icon={<FaRandom />}
-              onClick={fetchData}
-            />
-        </Box>
-        <Heading as="h1" size="2xl">
-          Spacestagram
-        </Heading>
-
-        <Box px={2}>
-          <Link href="https://github.com/pswk1" isExternal>
-            <IconButton
-              isRound
-              size="lg"
-              variant="link"
-              aria-label="get random feed"
-              fontSize="20px"
-              icon={<FaGithub />}
-            />
-          </Link>
-
-          <Link href="https://www.linkedin.com/in/peterswkang/" isExternal>
-            <IconButton
-              isRound
-              size="lg"
-              variant="link"
-              aria-label="get random feed"
-              fontSize="20px"
-              icon={<FaLinkedin />}
-            />
-          </Link>
-        </Box>
-      </Flex>
+      <Header fetchData={fetchData} />
 
       {loading ? (
         <Center mt={10}>
