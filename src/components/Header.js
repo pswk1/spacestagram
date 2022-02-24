@@ -6,23 +6,10 @@ import { ColorModeSwitcher } from '../ColorModeSwitcher';
 const Header = ({ fetchData }) => {
   return (
     <Flex direction="row" justify="space-evenly" align="center" mb={10}>
-      <Box px={2}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <IconButton
-          isRound
-          size="md"
-          variant="ghost"
-          aria-label="get random feed"
-          fontSize="20px"
-          icon={<FaRandom />}
-          onClick={fetchData}
-        />
-      </Box>
       <Heading as="h1" size="2xl">
-        Spacestagram
+        spacestagram
       </Heading>
-
-      <Box px={2}>
+      <Box  px={4} mt={5}>
         <Link href="https://github.com/pswk1" isExternal>
           <IconButton
             isRound
@@ -44,6 +31,18 @@ const Header = ({ fetchData }) => {
             icon={<FaLinkedin />}
           />
         </Link>
+
+        <ColorModeSwitcher justifySelf="flex-end" />
+        <IconButton
+          mb={3}
+          isRound
+          size="lg"
+          variant="ghost"
+          aria-label="get random feed"
+          fontSize="20px"
+          icon={<FaRandom />}
+          onClick={fetchData}
+        />
       </Box>
     </Flex>
   );
