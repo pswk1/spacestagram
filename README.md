@@ -9,6 +9,7 @@ Application that pulls image data from NASA API
 - React
 - Javascript
 - Chakra-UI
+- Jest
 
 ## Features
 - Responsive to browserwidths
