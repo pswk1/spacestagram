@@ -9,7 +9,7 @@ const Header = ({ fetchData }) => {
       <Heading as="h1" size="2xl">
         spacestagram
       </Heading>
-      <Box  px={4} mt={5}>
+      <Box  mt={5} >
         <Link href="https://github.com/pswk1" isExternal>
           <IconButton
             isRound
