@@ -21,3 +21,8 @@ Application that pulls image data from NASA API
 - Navigate to the root directory of the repo.
 - Run ```npm install``` to install dependencies.
 - Run ```npm start``` to start the application.
+- Run ```npm run test``` to run tests OR
+- Run ```npm run test:watch``` to run tests in watch mode
+
+## Tests
+[Tests](https://github.com/pswk1/spacestagram/tree/master/src/__tests__)
