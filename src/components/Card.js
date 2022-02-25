@@ -19,6 +19,7 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import FallbackImg from '../assets/img/notfound.jpg';
 
 const Card = ({
   title,
@@ -54,8 +55,10 @@ const Card = ({
       bg={colorMode === 'dark' ? 'gray.700' : 'gray.200'}
     >
       <Image
+        data-testid="card-image"
         src={url}
-        alt="space api image"
+        fallbackSrc={FallbackImg}
+        alt={title}
         boxSize={[250, 340, 400]}
         objectFit="cover"
       />
