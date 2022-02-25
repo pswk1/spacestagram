@@ -9,7 +9,6 @@ import { generateRandomLikes, generateId } from '../utils/utils';
 
 const img = {
   title: 'Perseverance Sol 354',
-  //   url: 'https://apod.nasa.gov/apod/image/2202/PerseveranceSol354Nav1_1br2_KenKremer1024.jpg',
   id: generateId(),
   date: '2022-02-25',
   explanation:
@@ -20,17 +19,37 @@ const img = {
 
 test('displays fallback image in case of loading image error', async () => {
   const view = render(
-      <Card
-        id={img.id}
-        title={img.title}
-        date={img.date}
-        explanation={img.explanation}
-        url={img.url}
-        numOfLikes={img.numOfLikes}
-        liked={img.liked}
-      />
+    <Card
+      id={img.id}
+      title={img.title}
+      date={img.date}
+      explanation={img.explanation}
+      url={img.url}
+      numOfLikes={img.numOfLikes}
+      liked={img.liked}
+    />
   );
 
   const cardImg = await view.findByTestId('card-image');
   expect(cardImg.src).toContain(FallbackImg);
+});
+
+test('displays correct image when loaded', async () => {
+  img.url =
+    'https://apod.nasa.gov/apod/image/2202/PerseveranceSol354Nav1_1br2_KenKremer1024.jpg';
+
+  const view = render(
+    <Card
+      id={img.id}
+      title={img.title}
+      date={img.date}
+      explanation={img.explanation}
+      url={img.url}
+      numOfLikes={img.numOfLikes}
+      liked={img.liked}
+    />
+  );
+
+  const cardImg = await view.findByTestId('card-image');
+  expect(cardImg.src).toBe(img.url);
 });

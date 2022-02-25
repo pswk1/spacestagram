@@ -47,6 +47,9 @@ const Card = ({
     setImgData(imgDataCopy);
   };
 
+  const handleImgError = () => {
+    url = FallbackImg;
+  }
   return (
     <Box
       w={[250, 340, 400]}
@@ -57,7 +60,7 @@ const Card = ({
       <Image
         data-testid="card-image"
         src={url}
-        fallbackSrc={FallbackImg}
+        onError={handleImgError}
         alt={title}
         boxSize={[250, 340, 400]}
         objectFit="cover"
