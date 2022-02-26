@@ -1,38 +1,44 @@
 import React from 'react';
-import { Box, Heading, Flex, IconButton, Link } from '@chakra-ui/react';
-import { FaRandom, FaGithub, FaLinkedin } from 'react-icons/fa';
+import {
+  Box,
+  Heading,
+  Flex,
+  IconButton,
+  Link,
+  // useBreakpointValue
+} from '@chakra-ui/react';
+import { FaRandom, FaGithub } from 'react-icons/fa';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
 const Header = ({ fetchData }) => {
+  // const direction = useBreakpointValue({ base: 'row', sm: 'column', md: 'row'})
+  // const marginBottom = useBreakpointValue({ base: 1, sm: 1, md: 6})
+
   return (
-    <Flex direction="row" justify="space-evenly" align="center" mb={10}>
+    // passing an array of values like the ones that are being passed in direction and mb represent the values at different breakpoints
+    <Flex
+      direction={['column', 'column', 'row']}
+      justify="space-around"
+      align="center"
+      mb={[1, 1, 6]}
+    >
       <Heading as="h1" size="2xl">
         spacestagram
       </Heading>
-      <Box  mt={5} >
-        <Link href="https://github.com/pswk1" isExternal>
+      <Box mt={5}>
+        <Link href="https://github.com/pswk1/spacestagram" isExternal>
           <IconButton
             isRound
             size="lg"
             variant="link"
-            aria-label="get random feed"
+            aria-label="go to github"
             fontSize="20px"
             icon={<FaGithub />}
           />
         </Link>
 
-        <Link href="https://www.linkedin.com/in/peterswkang/" isExternal>
-          <IconButton
-            isRound
-            size="lg"
-            variant="link"
-            aria-label="get random feed"
-            fontSize="20px"
-            icon={<FaLinkedin />}
-          />
-        </Link>
-
         <ColorModeSwitcher justifySelf="flex-end" />
+
         <IconButton
           mb={3}
           isRound
