@@ -72,7 +72,7 @@ const Card = ({
           </Badge>
         </Stack>
         <Stack align="center">
-          <Text as="h2" fontWeight="normal" my={2}>
+          <Text data-testid='title' as="h2" fontWeight="normal" my={2}>
             {title}
           </Text>
         </Stack>
@@ -92,7 +92,7 @@ const Card = ({
           <Spacer />
           <Popover isLazy>
             <PopoverTrigger>
-              <Button variant="solid" colorScheme="purple" size="sm">
+              <Button data-testid='learn-more' variant="solid" colorScheme="purple" size="sm">
                 Learn More
               </Button>
             </PopoverTrigger>
@@ -100,7 +100,7 @@ const Card = ({
               <PopoverArrow />
               <PopoverCloseButton />
               <PopoverHeader>Description</PopoverHeader>
-              <PopoverBody>{explanation}</PopoverBody>
+              <PopoverBody data-testid='explanation' >{explanation}</PopoverBody>
             </PopoverContent>
           </Popover>
         </Flex>
