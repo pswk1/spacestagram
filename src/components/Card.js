@@ -79,6 +79,7 @@ const Card = ({
         <Flex alignItems="center" justifyContent="space-around">
           <IconButton
             mx={1}
+            data-testid='like-button'
             isRound
             size="sm"
             variant="ghost"
@@ -88,7 +89,7 @@ const Card = ({
             icon={liked ? <AiFillHeart /> : <AiOutlineHeart />}
             onClick={() => handleLike(id)}
           />
-          <Text >{numOfLikes} likes</Text>
+          <Text data-testid='numOfLikes'>{numOfLikes} likes</Text>
           <Spacer />
           <Popover isLazy>
             <PopoverTrigger>
