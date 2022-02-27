@@ -1,13 +1,10 @@
 # Spacestagram
 
-## Description
-Application that pulls image data from NASA API
+## Tests
+[Tests](https://github.com/pswk1/spacestagram/tree/master/src/__tests__)
 
 ## Deploy
 [Deployed on Netlify](https://pk-spacestagram.netlify.app/)
-
-## Tests
-[Tests](https://github.com/pswk1/spacestagram/tree/master/src/__tests__)
 
 ## Tech
 - React
