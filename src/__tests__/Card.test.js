@@ -129,6 +129,9 @@ describe('tests like/unlike updates state', () => {
     const handleClick = jest.spyOn(React, 'useState');
     handleClick.mockImplementation(imgData => [imgData, setImgData]);
 
+    const outlineHeart = await view.findByTestId('outline-heart');
+    expect(outlineHeart).toBeInTheDocument();
+
     const likeBtn = await view.findByTestId('like-button');
     fireEvent.click(likeBtn);
 

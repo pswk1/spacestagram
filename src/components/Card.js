@@ -49,7 +49,7 @@ const Card = ({
 
   const handleImgError = () => {
     url = FallbackImg;
-  }
+  };
   return (
     <Box
       w={[250, 340, 400]}
@@ -72,28 +72,39 @@ const Card = ({
           </Badge>
         </Stack>
         <Stack align="center">
-          <Text data-testid='title' as="h2" fontWeight="normal" my={2}>
+          <Text data-testid="title" as="h2" fontWeight="normal" my={2}>
             {title}
           </Text>
         </Stack>
         <Flex alignItems="center" justifyContent="space-around">
           <IconButton
             mx={1}
-            data-testid='like-button'
+            data-testid="like-button"
             isRound
             size="sm"
             variant="ghost"
             colorScheme="red"
             aria-label="Like Button"
             fontSize="20px"
-            icon={liked ? <AiFillHeart /> : <AiOutlineHeart />}
+            icon={
+              liked ? (
+                <AiFillHeart />
+              ) : (
+                <AiOutlineHeart data-testid="outline-heart" />
+              )
+            }
             onClick={() => handleLike(id)}
           />
-          <Text data-testid='numOfLikes'>{numOfLikes} likes</Text>
+          <Text data-testid="numOfLikes">{numOfLikes} likes</Text>
           <Spacer />
           <Popover isLazy>
             <PopoverTrigger>
-              <Button data-testid='learn-more' variant="solid" colorScheme="purple" size="sm">
+              <Button
+                data-testid="learn-more"
+                variant="solid"
+                colorScheme="purple"
+                size="sm"
+              >
                 Learn More
               </Button>
             </PopoverTrigger>
@@ -101,7 +112,7 @@ const Card = ({
               <PopoverArrow />
               <PopoverCloseButton />
               <PopoverHeader>Description</PopoverHeader>
-              <PopoverBody data-testid='explanation' >{explanation}</PopoverBody>
+              <PopoverBody data-testid="explanation">{explanation}</PopoverBody>
             </PopoverContent>
           </Popover>
         </Flex>
