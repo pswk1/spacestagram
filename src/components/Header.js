@@ -26,7 +26,7 @@ const Header = ({ fetchData }) => {
         spacestagram
       </Heading>
       <Box mt={5}>
-        <Link href="https://github.com/pswk1/spacestagram" isExternal>
+        <Link data-testid='github-link'href="https://github.com/pswk1/spacestagram" isExternal>
           <IconButton
             isRound
             size="lg"
@@ -37,9 +37,10 @@ const Header = ({ fetchData }) => {
           />
         </Link>
 
-        <ColorModeSwitcher justifySelf="flex-end" />
+        <ColorModeSwitcher data-testid='colormode' justifySelf="flex-end" />
 
         <IconButton
+          data-testid='random-feed'
           mb={3}
           isRound
           size="lg"
