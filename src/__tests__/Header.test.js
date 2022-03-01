@@ -23,3 +23,18 @@ describe('renders Header component and its children', () => {
     expect(randomFeed).toBeInTheDocument();
   });
 });
+
+describe('random feed updates state', () => {
+  const setRandom = jest.fn();
+  test('clicking random feed button fetches new data/updates state', async () => {
+    const view = render(<Header fetchData={setRandom} />);
+
+    const handleClick = jest.spyOn(React, 'useState');
+    handleClick.mockImplementation(random => [random, setRandom]);
+
+    const randomFeed = await view.findByTestId('random-feed');
+    fireEvent.click(randomFeed);
+
+    expect(setRandom).toBeCalled();
+  });
+});
