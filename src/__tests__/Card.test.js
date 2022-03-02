@@ -4,7 +4,6 @@ import { expect, test } from '@jest/globals';
 import { render, fireEvent } from '@testing-library/react';
 import FallbackImg from '../assets/img/notfound.jpg';
 import Card from '../components/Card';
-import 'regenerator-runtime/runtime';
 import { generateRandomLikes, generateId } from '../utils/utils';
 import '@testing-library/jest-dom/extend-expect';
 

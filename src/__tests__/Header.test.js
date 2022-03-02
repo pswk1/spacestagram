@@ -3,7 +3,6 @@ import React from 'react';
 import { expect, test } from '@jest/globals';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import 'regenerator-runtime/runtime';
 import Header from '../components/Header';
 
 describe('renders Header component and its children', () => {
