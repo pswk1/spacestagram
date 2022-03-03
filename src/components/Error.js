@@ -21,7 +21,7 @@ const Error = ({ errorAlert }) => {
       <AlertTitle mt={4} mb={1} fontSize="lg">
         Error
       </AlertTitle>
-      <AlertDescription maxWidth="sm">
+      <AlertDescription data-testid='error-alert' maxWidth="sm">
         { errorAlert }
       </AlertDescription>
     </Alert>
