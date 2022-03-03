@@ -11,6 +11,7 @@ import axios from 'axios';
 import { generateRandomLikes, generateId } from './utils/utils';
 import Card from './components/Card';
 import Header from './components/Header';
+import Error from './components/Error';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const APOD_URL = 'https://api.nasa.gov/planetary/apod';
@@ -20,6 +21,7 @@ const endpoint = `${APOD_URL}?api_key=${API_KEY}&count=12`;
 function App() {
   const [imgData, setImgData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [errorAlert, setErrorAlert] = useState('');
 
   const fetchData = async () => {
     setLoading(true);
@@ -33,7 +35,7 @@ function App() {
       setImgData(data);
     } catch (err) {
       if (err) {
-        console.log(err.message);
+        setErrorAlert(err.message);
       }
     } finally {
       setLoading(false);
@@ -47,10 +49,13 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Header fetchData={fetchData} />
-
       {loading ? (
         <Center mt={10}>
           <Spinner size="xl" />
+        </Center>
+      ) : errorAlert ? (
+        <Center mt={10}>
+          <Error errorAlert={errorAlert} />
         </Center>
       ) : (
         <Flex alignItems="center" justifyContent="center">
