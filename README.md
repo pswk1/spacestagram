@@ -17,6 +17,7 @@
 - User can like/unlike each image
 - User can read more about the image. Description pulled from NASA API
 - User can fetch a random & different set of images to interact with
+- Unit tests written with Jest and RTL
 
 ## Installation and Usage
 - Clone repository into your machine.
