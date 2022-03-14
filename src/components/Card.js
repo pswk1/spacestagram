@@ -36,13 +36,13 @@ const Card = ({
 
   const handleLike = id => {
     let imgDataCopy = [...imgData];
-    let imgToLike = imgDataCopy.find(img => img.id === id);
-    if (imgToLike.liked) {
-      imgToLike.liked = false;
-      imgToLike.numOfLikes--;
+    let img = imgDataCopy.find(img => img.id === id);
+    if (img.liked) {
+      img.liked = false;
+      img.numOfLikes--;
     } else {
-      imgToLike.liked = true;
-      imgToLike.numOfLikes++;
+      img.liked = true;
+      img.numOfLikes++;
     }
     setImgData(imgDataCopy);
   };
